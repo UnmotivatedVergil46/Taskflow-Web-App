@@ -22,7 +22,7 @@ class Task(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     title = Column(String(255), nullable=False)
-    due_date = Column(String, nullable=True)
+    due_date = Column(String(50), nullable=True)
     completed = Column(Boolean, default=False)
     created_at = Column(DateTime, default=func.now())
     
