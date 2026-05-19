@@ -28,7 +28,7 @@ export default function LoginPage() {
       <div className="auth-card">
         <div className="auth-header">
           <div className="auth-icon"><FiCheckSquare /></div>
-          <h1>Welcome Back</h1>
+          <h1>Welcome To TaskFlow</h1>
           <p>Sign in to access your tasks</p>
         </div>
         {error && <div className="error-message">{error}</div>}

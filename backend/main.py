@@ -1,10 +1,3 @@
-"""
-Todo App — FastAPI Server
---------------------------
-Entry point for the backend API.
-Mounts auth and task routes, initializes DB, and starts listening.
-"""
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -14,22 +7,19 @@ from datetime import datetime
 
 load_dotenv()
 
-# Import modules
 from config import init_db, is_using_memory
 import auth_routes
 import task_routes
 
-# Database initialization
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
     await init_db()
     yield
-    # Shutdown (if needed)
 
 app = FastAPI(lifespan=lifespan)
 
-# Configure CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -38,11 +28,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(auth_routes.router, prefix="/api/auth", tags=["auth"])
 app.include_router(task_routes.router, prefix="/api/tasks", tags=["tasks"])
 
-# Health check endpoint
 @app.get("/api/health")
 async def health_check():
     storage_type = "in-memory" if is_using_memory() else "mysql"
@@ -52,7 +40,6 @@ async def health_check():
         "timestamp": datetime.utcnow().isoformat() + "Z"
     }
 
-# Start server
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 5000))

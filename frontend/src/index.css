@@ -1,11 +1,4 @@
-/* =============================================
- * TASKFLOW — Global Design System
- * Premium dark-mode theme with vibrant accents
- * ============================================= */
-
-/* ── CSS Variables ────────────────────────────── */
 :root {
-  /* Backgrounds */
   --bg-primary: #1a1b1b;
   --bg-secondary: #111111;
   --bg-card: #161616;
@@ -56,7 +49,7 @@
   --shadow-glow-green: 0 0 20px rgba(52, 211, 153, 0.15);
 }
 
-/* ── Reset & Base ─────────────────────────────── */
+
 *,
 *::before,
 *::after {

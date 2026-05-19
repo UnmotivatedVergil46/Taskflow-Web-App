@@ -22,7 +22,7 @@ export default function SignupPage() {
     try {
       await signup(username, password);
     } catch (err) {
-      setError(err.response?.data?.error || 'Signup failed.');
+      setError(err.response?.data?.error || 'User already exists.');
     } finally {
       setLoading(false);
     }
@@ -47,7 +47,7 @@ export default function SignupPage() {
           <div className="form-group">
             <label htmlFor="signup-password">Password</label>
             <input id="signup-password" className="form-input" type="password"
-              placeholder="Min 6 characters" value={password}
+              placeholder="Minimum 6 Characters" value={password}
               onChange={(e) => setPassword(e.target.value)} required />
           </div>
           <div className="form-group">
